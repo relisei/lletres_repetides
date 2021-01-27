@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Tahoma, sans-serif;
+    font-size: 1rem;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #1b1b1b;
+}
+.GraphicInterface{
+    width: 30rem;
+    display: flex;
+    flex-direction: column;
+    color: azure;
+}
+.resultado{
+    border-radius: 0.25rem;
+}
+input, button{
+    margin-top: 0.5rem;
+    color: #3a3838;
+    background-color: #c2c2c2;
+}
+.GraphicInterface .resultado{
+    height: 25rem;
+    background-color: #575454;
+    text-align: left;
+    padding-left: 0.625rem;
+    padding-top: 10rem;
+    font-size: 1.25rem;
+}
+.buttons{
+    display: flex;
+    justify-content: space-between;
+}
+.exc {
+    height: 2rem;
+    border-radius: 0.25rem;
+    padding: 0.25rem;
+}
+

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nivel III</title>
+    <link rel="stylesheet" type="text/css" href="../Nivel-III/styles.css">
+</head>
+<body>
+    <script src="indexjs.js"></script>
+
+    <form class="GraphicInterface" name="device">
+        <p class="resultado valor" id="#result">Choose your function_></p>
+        <div class="buttons">
+            <input class="exc" type="button" value="LOOP" id="loop" onclick="interface.loop()">
+            <input class="exc" type="button" value="IF/ELSE" id="conditionals" onclick="interface.conditionals()">
+            <input class="exc" type="button" value="MAP" id="map" onclick="interface.map()">
+            <input class="exc" type="button" value="ARRAY" id="array" onclick="interface.array()">
+            <input class="exc" type="button" value="REGEX" id="regex" onclick="interface.regex()">
+            <button class="exc reset" onclick="reset();"><p>Reset Function</p></button>
+        </div>
+    </form>
+
+
+    <script>
+        var interface = {
+
+            "loop": function (makeLoop){
+                var LetrasDeNombre = ["R", "A", "M", "I", "R", "O"];
+                for(var i=0; i<LetrasDeNombre.length;i++) {
+                    document.getElementById('#result').innerHTML=(LetrasDeNombre)
+                }
+            },
+
+            "conditionals": function (makeConditionals){
+                var LetrasDeNombres = ["R", 4, "M", "I", "R", 0];
+                let voca = ["A","E","I","O","U"]
+                let cons = ["B","C","D","F","G","H","J","K","L","Ñ","M","N","P","Q","R","S","T","V","W","X","Y","Z"]
+                let element = document.createElement('p');
+                let innerText = ''
+                let text = document.createTextNode(innerText);
+                for (var i=0; i<LetrasDeNombres.length;i++) {
+                    if(voca.includes(LetrasDeNombres[i])){
+                        let element = document.createElement('p');
+                        let innerText = `He trobat la VOCAL: ${LetrasDeNombres[i]}`;
+                        let text = document.createTextNode(innerText);
+                        element.appendChild(text)
+                        document.getElementById('#result').appendChild(element);
+                    } else if (cons.includes(LetrasDeNombres[i])){
+                        let element = document.createElement('p');
+                        let innerText = `He trobat la CONSONTANT: ${LetrasDeNombres[i]}`;
+                        let text = document.createTextNode(innerText);
+                        element.appendChild(text)
+                        document.getElementById('#result').appendChild(element);
+                    } else if (LetrasDeNombres[i] !== typeof(String)){
+                        let element = document.createElement('p');
+                        let innerText = `Els noms de persones no contenen el número: ${LetrasDeNombres[i]}`;
+                        let text = document.createTextNode(innerText);
+                        element.appendChild(text)
+                        document.getElementById('#result').appendChild(element);
+                    }
+                }  
+            },
+
+            "map": function (makeMap){
+                const myArray = ["A", "L", "E", "J", "A", "N", "D", "R", "O"];
+        
+                        mapStr = new Map;
+                        for(let i = 0; i<myArray.length; i++){
+                            let item = parseInt(mapStr.get(myArray[i]))
+                            if(item>=1){
+                                mapStr.set(myArray[i], item+=1)
+                            }else{
+                                mapStr.set(myArray[i],1)
+                            }
+                        }
+                        console.log(mapStr)
+
+                        return document.getElementById('#result').innerHTML = mapStr;
+            },
+            "array": function (makeArray) {
+
+                var nameArray = Array.from("RAMIRO")
+                const surnameArray = Array.from('ELISEI');
+                const nameSurnameArray = nameArray.concat(" ",surnameArray);        
+                return document.getElementById('#result').innerHTML=nameSurnameArray;
+            },
+            "regex": function (makeRegEx) {
+
+                var str = "Una dirección de correo electrónico es la dirección que utiliza para recibir y enviar correos electrónicos. Se muestra a los destinatarios de sus correos electrónicos para que sepan quién le envió un correo electrónico. Cada dirección de correo electrónico sólo se puede asignar una vez en todo el mundo y, por lo tanto, está disponible exclusivamente para usted. No puede cambiar las direcciones de correo electrónico, pero puede eliminarlas en cualquier momento. Una dirección de correo electrónico consiste en el signo @ (arroba), el nombre de usuario delante y el dominio detrás, por ejemplo, nombre-de-usuario@ionos.es: La parte del dominio depende del dominio bajo el cual se crea la dirección de correo electrónico: en nuestro ejemplo es ionos.es. Esta información varía de proveedor a proveedor, por lo que una parte del dominio también puede ser gmail.com o gmx.es si utiliza una dirección de correo electrónico de estos proveedores. Si ha registrado su propio dominio, por ejemplo, www.el-nombre-de-sus-sueños.es, las direcciones de correo electrónico que configura para el dominio lo tienen como parte del dominio (nombre-de-usuario@el-nombre-de-sus-sueños.es o nombre-de-usuario@el-nombre-de-sus-sueños.ES). El nombre de usuario es la parte de una dirección de correo electrónico que puede seleccionar libremente en la medida de lo posible. Puede, por ejemplo, utilizar su propio nombre o el nombre o departamento de una empresa. Si utiliza una dirección de correo electrónico con un proveedor de correo como gmail.com o gmx.es, es posible que la combinación con la parte del dominio deseada ya esté registrada. En este caso, deberá considerar alternativas para el nombre de usuario de su dirección de correo electrónico. Si utiliza su propio dominio, estas restricciones no se aplican porque sólo usted puede crear direcciones de correo electrónico que coincidan con su propio dominio. En resumen, nombre-de-usuario@ionos.es es un email"; 
+        
+                var re = /([a-zA-Z0-9._-]+@[a-zA-Z0-9\u00f1._-]+\.[a-zA-Z._-]+)(?!.*\1.*)/g;
+        
+                return document.getElementById('#result').innerHTML=str.match(re);
+
+            }
+            
+        }
+        function reset(){
+            document.getElementById('GraphicInterface').reset();
+        }
+
+    </script>
+</body>
+</html>
+
